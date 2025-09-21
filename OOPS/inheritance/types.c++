@@ -133,4 +133,45 @@ int main() {
 
 // java does not support Multiple Inheritance as it generates a DIAMOND PROBLEM.
 
+// HYBRID : 
+#include <bits/stdc++.h>
+using namespace std;
+
+class A {
+public:
+    void featureA() {
+        cout << "Feature of A" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void featureB() {
+        cout << "Feature of B (inherits A)" << endl;
+    }
+};
+
+class C {
+public:
+    void featureC() {
+        cout << "Feature of C" << endl;
+    }
+};
+
+class D : public B, public C {
+public:
+    void featureD() {
+        cout << "Feature of D (Hybrid Inheritance)" << endl;
+    }
+};
+
+int main() {
+    D obj;
+    obj.featureA();  // From A
+    obj.featureB();  // From B
+    obj.featureC();  // From C
+    obj.featureD();  // From D
+    return 0;
+}
+
 
