@@ -1,0 +1,101 @@
+Polymorphism in C++ can be broadly divided into:
+1. Compile-time polymorphism → Function / Operator Overloading
+2. Run-time polymorphism   → Function Overriding
+
+Below is a detailed comparison:
+
+----------------------------------------------------
+1) Function Overloading
+----------------------------------------------------
+- Definition:
+  Multiple functions with the same name but different parameter lists.
+  The return type alone is not enough; the parameter list must differ
+  in type, number, or order.
+
+- When decided:
+  At compile-time (early binding).
+
+- Key points:
+  • Same scope (inside the same class).
+  • Parameters must differ.
+  • Improves readability (one name, many forms).
+  • No need for inheritance.
+
+- Example:
+  class Math {
+  public:
+      int add(int a, int b) {
+          return a + b;
+      }
+      double add(double a, double b) {
+          return a + b;
+      }
+  };
+
+  int main() {
+      Math m;
+      cout << m.add(2, 3) << endl;       // calls int version
+      cout << m.add(2.5, 3.1) << endl;   // calls double version
+  }
+
+----------------------------------------------------
+2) Function Overriding
+----------------------------------------------------
+- Definition:
+  Redefining a base class method in the derived class
+  with the same signature (name + parameters).
+
+- When decided:
+  At runtime (late binding).
+
+- Key points:
+  • Requires inheritance.
+  • Base class function should be declared "virtual".
+  • Derived class provides its own implementation.
+  • Achieves run-time polymorphism.
+
+- Example:
+  class Animal {
+  public:
+      virtual void speak() {
+          cout << "Animal speaks" << endl;
+      }
+  };
+
+  class Dog : public Animal {
+  public:
+      void speak() override {
+          cout << "Dog barks" << endl;
+      }
+  };
+
+  int main() {
+      Animal* a = new Dog();
+      a->speak();  // Run-time decides → "Dog barks"
+  }
+
+----------------------------------------------------
+3) Differences at a glance
+----------------------------------------------------
+- Overloading:
+  • Same class, different parameter lists
+  • Decided at compile-time
+  • Achieved without inheritance
+  • Example: multiple "add()" methods
+
+- Overriding:
+  • Requires inheritance (base → derived)
+  • Same signature, different implementation
+  • Decided at runtime
+  • Example: "speak()" redefined in Dog class
+
+----------------------------------------------------
+4) Quick Analogy
+----------------------------------------------------
+- Overloading = One person with multiple skillsets
+  (same person can cook, drive, or code depending on context)
+
+- Overriding = Child inherits a skill from parent but performs it differently
+  (Parent sings classical, child sings rap → same "sing()" function, different output)
+
+
