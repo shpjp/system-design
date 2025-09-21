@@ -1,6 +1,5 @@
 # Polymorphism in C++ – My Notes
-
-Okay so I’m writing this for myself while studying, so the explanation will be **simple and straight**.  
+  
 Polymorphism basically means **many forms**. It’s one of the pillars of OOP along with encapsulation, inheritance, and abstraction.  
 
 ---
